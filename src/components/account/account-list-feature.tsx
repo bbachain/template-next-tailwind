@@ -1,7 +1,7 @@
 'use client'
 
-import { useWallet } from '@solana/wallet-adapter-react'
-import { WalletButton } from '../solana/solana-provider'
+import { useWallet } from '@bbachain/wallet-adapter-react'
+import { WalletButton } from '../contexts/bbachain-provider'
 
 import { redirect } from 'next/navigation'
 

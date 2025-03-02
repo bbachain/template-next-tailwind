@@ -2,27 +2,27 @@
 
 ### Usage
 
-Use the [create-solana-dapp](https://github.com/solana-developers/create-solana-dapp) tool to start a new project based on this template (recommended).
+Use the [create-bbachain-dapp](https://github.com/bbachain/create-bbachain-dapp) tool to start a new project based on this template (recommended).
 
 ```shell
 # created an npm based project
-npx create-solana-dapp --template next-tailwind
+npx create-bbachain-dapp --template next-tailwind
 # created an pnpm based project
-pnpx create-solana-dapp --template next-tailwind
+pnpx create-bbachain-dapp --template next-tailwind
 # created an yarn based project
-yarn create solana-dapp --template next-tailwind
+yarn create bbachain-dapp --template next-tailwind
 ```
 
 ### Prerequisites
 
--   Node v18.18.0 or higher
+- Node v18.18.0 or higher
 
 ### Manual installation
 
 #### Clone the repo
 
 ```shell
-git clone https://github.com/solana-developers/template-next-tailwind.git
+git clone https://github.com/bbachain/template-next-tailwind.git
 cd template-next-tailwind
 ```
 
@@ -42,7 +42,7 @@ pnpm dev
 
 ### web
 
-This is a Next.js web app to get you started on interacting with the Solana network.
+This is a Next.js web app to get you started on interacting with the BBAChain network.
 
 Start the web app
 
