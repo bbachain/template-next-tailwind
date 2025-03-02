@@ -1,6 +1,6 @@
 'use client'
 
-import { clusterApiUrl, Connection } from '@solana/web3.js'
+import { clusterApiUrl, Connection } from '@bbachain/web3.js'
 import { atom, useAtomValue, useSetAtom } from 'jotai'
 import { atomWithStorage } from 'jotai/utils'
 import { createContext, ReactNode, useContext } from 'react'
@@ -14,9 +14,8 @@ export interface Cluster {
 }
 
 export enum ClusterNetwork {
-  Mainnet = 'mainnet-beta',
+  Mainnet = 'mainnet',
   Testnet = 'testnet',
-  Devnet = 'devnet',
   Custom = 'custom',
 }
 
@@ -24,11 +23,6 @@ export enum ClusterNetwork {
 // The endpoint provided by clusterApiUrl('mainnet-beta') does not allow access from the browser due to CORS restrictions
 // To use the mainnet-beta cluster, provide a custom endpoint
 export const defaultClusters: Cluster[] = [
-  {
-    name: 'devnet',
-    endpoint: clusterApiUrl('devnet'),
-    network: ClusterNetwork.Devnet,
-  },
   { name: 'local', endpoint: 'http://localhost:8899' },
   {
     name: 'testnet',
@@ -37,8 +31,8 @@ export const defaultClusters: Cluster[] = [
   },
 ]
 
-const clusterAtom = atomWithStorage<Cluster>('solana-cluster', defaultClusters[0])
-const clustersAtom = atomWithStorage<Cluster[]>('solana-clusters', defaultClusters)
+const clusterAtom = atomWithStorage<Cluster>('bbachain-cluster', defaultClusters[0])
+const clustersAtom = atomWithStorage<Cluster[]>('bbachain-clusters', defaultClusters)
 
 const activeClustersAtom = atom<Cluster[]>((get) => {
   const clusters = get(clustersAtom)
@@ -87,7 +81,7 @@ export function ClusterProvider({ children }: { children: ReactNode }) {
       setClusters(clusters.filter((item) => item.name !== cluster.name))
     },
     setCluster: (cluster: Cluster) => setCluster(cluster),
-    getExplorerUrl: (path: string) => `https://explorer.solana.com/${path}${getClusterUrlParam(cluster)}`,
+    getExplorerUrl: (path: string) => `https://explorer.bbachain.com/${path}${getClusterUrlParam(cluster)}`,
   }
   return <Context.Provider value={value}>{children}</Context.Provider>
 }
@@ -99,9 +93,6 @@ export function useCluster() {
 function getClusterUrlParam(cluster: Cluster): string {
   let suffix = ''
   switch (cluster.network) {
-    case ClusterNetwork.Devnet:
-      suffix = 'devnet'
-      break
     case ClusterNetwork.Mainnet:
       suffix = ''
       break
